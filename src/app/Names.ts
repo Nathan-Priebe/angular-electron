@@ -1,16 +1,9 @@
 export class Names {
-    _id: string;
-    Name: string;
-    StartDate: string; 
-    EndDate: string;
-    // TestScores: string[];
+    name:string;
+    id: number;
 
     constructor(obj: object) {
-        
-        this._id = obj['_id'];
-        this.Name = obj['Name'];
-        this.StartDate = obj['StartDate'];
-        this.EndDate = obj['EndDate'];
-        // this.TestScores = obj['TestScores'];
+        this.name = obj['name'];
+        this.id = obj['id'];
     }
 }
