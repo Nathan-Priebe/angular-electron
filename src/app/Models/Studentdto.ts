@@ -1,5 +1,5 @@
-export class Names {
-    _id: string;
+export class Studentdto {
+    _id: number;
     Name: string;
     StartDate: string; 
     EndDate: string;

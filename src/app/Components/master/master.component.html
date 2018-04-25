@@ -1,0 +1,22 @@
+<div style="background-color: #2196F3 !important; color: white;" class="row shadow-sm p-3 mb-5 bg-light">
+  <div class="col-md-6">
+      <h5 style="font-weight: 300"><i class="fa fa-book icon" aria-hidden="true"></i>Student Info</h5>
+  </div>
+  <div class="row col-md-6">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3" [routerLink]="['/AddStudent']">
+      <i class="fa fa-pencil icon" aria-hidden="true"></i>Add Student
+    </div>
+    <div class="col-md-3">
+      <i class="fa fa-user icon" aria-hidden="true"></i>Other
+    </div>
+    <div class="col-md-3">
+      <i class="fa fa-table icon" aria-hidden="true"></i>Buttons
+    </div>
+  </div>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div> 
