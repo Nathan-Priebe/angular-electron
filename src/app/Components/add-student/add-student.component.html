@@ -2,7 +2,7 @@
     <h1>Add Student</h1>
     <form (ngSubmit)="save()" [formGroup]="studentForm">
       <div class="form-group">
-          <label for="studentId">Name</label>
+          <label for="studentId">Student ID</label>
           <input type="text" class="form-control" id="studentId" required formControlName="studentId">
       </div>
 
@@ -12,13 +12,23 @@
       </div>
 
       <div class="form-group">
+        <label for="class">Class</label>
+        <select class="form-control" formControlName="class" id="class">
+          <option *ngFor="let x of classes"
+            [value]="x.Name">
+               {{x.Name}}
+          </option>
+       </select>
+      </div>
+
+      <div class="form-group">
         <label for="startDate">Start Date</label>
-        <input type="text" class="form-control" id="startDate" required formControlName="startDate">
+        <input type="date" class="form-control" id="startDate" required formControlName="startDate" (change)="changeStartDate()">
       </div>
 
       <div class="form-group">
           <label for="endDate">End Date</label>
-          <input type="text" class="form-control" id="endDate" required formControlName="endDate">
+          <input type="date" class="form-control" id="endDate" required formControlName="endDate">
       </div>
 
       <button type="submit" class="btn btn-success">Submit</button>

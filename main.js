@@ -26,6 +26,9 @@ function createWindow () {
 // Create window on electron intialization
 app.on('ready', createWindow)
 
+app.setAppUserModelId("com.angular.electron");
+app.setAsDefaultProtocolClient('electron');
+
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
 

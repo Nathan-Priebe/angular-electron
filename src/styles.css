@@ -2,3 +2,7 @@
 .icon{
     padding-right:5px;
 }
+
+.button{
+    cursor: pointer;
+}

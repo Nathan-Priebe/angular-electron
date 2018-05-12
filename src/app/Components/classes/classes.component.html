@@ -1,0 +1,29 @@
+<div class="container row col-md-12">
+  <div class="col-md-10">
+    <h1>Classes</h1>
+    </div>
+    <div class="col-md-2 button" [routerLink]="['/AddClass']" style="text-align: center; margin: auto;">
+      <i class="fa fa-plus  icon" aria-hidden="true"></i>Add Class
+    </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Class ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let x of classes'>
+      <td>{{x._id}}</td>
+      <td>{{x.Name}}</td>
+      <th>
+        <i class="fa fa-pencil icon" aria-hidden="true"></i>
+        <i class="fa fa-book icon" aria-hidden="true"></i>
+        <i class="fa fa-trash icon" aria-hidden="true" (click)="deleteClass(x._id)"></i>
+      </th>
+    </tr>
+  </tbody>
+</table> 

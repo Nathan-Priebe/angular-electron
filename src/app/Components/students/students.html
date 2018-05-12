@@ -1,0 +1,39 @@
+<div class="alert alert-danger" role="alert" *ngIf="messageVisible">
+  {{message}}
+</div>
+
+<div class="container row col-md-12">
+  <div class="col-md-10">
+    <h1>Students</h1>
+    </div>
+    <div class="col-md-2 button" [routerLink]="['/AddStudent']" style="text-align: center; margin: auto;">
+      <i class="fa fa-plus  icon" aria-hidden="true"></i>Add Student
+    </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th (click)="updateFilter({StudentId: 1})">Student ID</th>
+      <th (click)="updateFilter({Name: 1})">Name</th>
+      <th (click)="updateFilter({Class: 1})">Class</th>
+      <th (click)="updateFilter({StartDate:1})">Began Course</th>
+      <th (click)="updateFilter({EndDate:1})">Finish Course</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let x of students'>
+      <td>{{x.StudentId}}</td>
+      <td>{{x.Name}}</td>
+      <td>{{x.Class}}</td>
+      <td>{{x.StartDate}}</td>
+      <td>{{x.EndDate}}</td>
+      <th>
+        <i class="fa fa-pencil icon" aria-hidden="true"></i>
+        <i class="fa fa-book icon" aria-hidden="true"></i>
+        <i class="fa fa-trash icon" aria-hidden="true" (click)="deleteStudent(x.StudentId)"></i>
+      </th>
+    </tr>
+  </tbody>
+</table> 
