@@ -4,11 +4,13 @@ import { Studentdto } from '../../Models/Studentdto';
 import * as Datastore from 'nedb';
 import { Student } from '../../Models/Student';
 import { Router } from "@angular/router";
+import { DatabaseService } from "../../Services/Database/database.service"
 
 @Component({
   selector: 'app-root',
   templateUrl: './students.html',
-  styleUrls: ['./students.css']
+  styleUrls: ['./students.css'],
+  providers: [DatabaseService]
 })
 export class Students implements OnInit {
   students: Studentdto[] = [];
@@ -17,12 +19,12 @@ export class Students implements OnInit {
   message:string = "Students finishing course soon: ";
   messageVisible: Boolean = false;
 
-  constructor(private router: Router){}
+  constructor(private databaseService: DatabaseService, private router: Router){}
 
   ngOnInit(): void {
-    // db.insert([{ _id: 1, Name:"Fred Borrows", StartDate:"21/04/2018", EndDate:"21/07/2018" }, { _id: 2, Name:"John Smith", StartDate:"14/01/2018", EndDate:"28/04/2018" }, {_id:3, Name:"Kerry Anne", StartDate:"22/02/2018", EndDate:"22/05/2018"}]);
-    this.db = new Datastore({ filename: '../../Datastore/Students.db', autoload: true });
-    this.dataAccess("read", {}, { Name: 1 })
+    
+    this.db = this.databaseService.LoadStudentDb();
+    this.databaseService.dbRead({}, { Name: 1 }, this.db)
       .then((docs) => this.fillUIList(docs))
       .catch((err) => console.error(err));
   }
@@ -30,8 +32,7 @@ export class Students implements OnInit {
   updateFilter(filter: any)
   {
     this.students = [];
-    console.log(filter);
-    this.dataAccess("read", {}, filter)
+    this.databaseService.dbRead({}, filter, this.db)
     .then((docs) => this.fillUIList(docs))
     .catch((err) => console.error(err));
   }
@@ -39,29 +40,10 @@ export class Students implements OnInit {
   deleteStudent(Id:any)
   {
     if(window.confirm('Are sure you want to delete this item ?')){
-        this.dataAccess("delete", {StudentId: Id}, {})
+        this.databaseService.dbDelete({StudentId: Id}, this.db)
         .then((docs) => window.location.reload())
         .catch((err) => console.error(err));
      }
-  }
-
-  dataAccess(command:string, filter: any, sort:any) {
-    return new Promise((resolve, reject) => {
-      if(command === "read")
-      {
-        this.db.find(filter).sort(sort).exec(function(err, docs) {
-          if(err) reject(err);
-          resolve(docs);
-        });
-      }
-      else if(command === "delete")      
-      {
-        this.db.remove(filter, function(err, numRemoved) {
-          if(err) reject(err);
-          resolve(numRemoved);
-        });
-      }
-    });
   }
   
   fillUIList(data:any):void{
@@ -72,7 +54,6 @@ export class Students implements OnInit {
           this.messageVisible = true;
           this.message = this.message + data[i]['Name'] + "(" + data[i]['StudentId'] +")";
         }
-        
     }
   }
 }

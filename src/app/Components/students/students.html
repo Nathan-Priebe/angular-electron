@@ -3,11 +3,14 @@
 </div>
 
 <div class="container row col-md-12">
-  <div class="col-md-10">
+  <div class="col-md-8">
     <h1>Students</h1>
     </div>
     <div class="col-md-2 button" [routerLink]="['/AddStudent']" style="text-align: center; margin: auto;">
       <i class="fa fa-plus  icon" aria-hidden="true"></i>Add Student
+    </div>
+    <div class="col-md-2 button" [routerLink]="['/AddTestResult']" style="text-align: center; margin: auto;">
+      <i class="fa fa-plus  icon" aria-hidden="true"></i>Add Test Result
     </div>
 </div>
 
@@ -17,6 +20,7 @@
       <th (click)="updateFilter({StudentId: 1})">Student ID</th>
       <th (click)="updateFilter({Name: 1})">Name</th>
       <th (click)="updateFilter({Class: 1})">Class</th>
+      <th (click)="updateFilter({Results: 1})">Results</th>
       <th (click)="updateFilter({StartDate:1})">Began Course</th>
       <th (click)="updateFilter({EndDate:1})">Finish Course</th>
       <th>Actions</th>
@@ -27,6 +31,7 @@
       <td>{{x.StudentId}}</td>
       <td>{{x.Name}}</td>
       <td>{{x.Class}}</td>
+      <td>{{x.AverageResult}}</td>
       <td>{{x.StartDate}}</td>
       <td>{{x.EndDate}}</td>
       <th>

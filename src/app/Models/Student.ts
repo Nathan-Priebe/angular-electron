@@ -5,4 +5,6 @@ export class Student{
     Class: string;
     StartDate: string; 
     EndDate: string;
+    Results: number[];
+    AverageResult: number;
 }

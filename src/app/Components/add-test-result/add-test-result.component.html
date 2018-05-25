@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Add Student</h1>
+  <form (ngSubmit)="save()" [formGroup]="resultForm">
+
+    <div class="form-group">
+      <label for="class">Student Name</label>
+      <select class="form-control" formControlName="name" id="name">
+        <option *ngFor="let x of students"
+          [value]="x.StudentId">
+             {{x.Name}}
+        </option>
+     </select>
+    </div>
+
+    <div class="form-group">
+      <label for="result">Result</label>
+      <input type="text" class="form-control" id="result" required formControlName="result">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+</div>

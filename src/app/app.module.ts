@@ -10,6 +10,7 @@ import { MasterComponent } from '../app/Components/master/master.component';
 import { AddStudentComponent } from '../app/Components/add-student/add-student.component';
 import { ClassesComponent } from '../app/Components/classes/classes.component';
 import { AddClassComponent } from '../app/Components/add-class/add-class.component';
+import { AddTestResultComponent } from '../app/Components/add-test-result/add-test-result.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AddClassComponent } from '../app/Components/add-class/add-class.compone
     Students,
     AddStudentComponent,
     ClassesComponent,
-    AddClassComponent
+    AddClassComponent,
+    AddTestResultComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { AddClassComponent } from '../app/Components/add-class/add-class.compone
       { path: 'StudentDetails', component: Students },
       { path: 'Classes', component: ClassesComponent },
       { path: 'AddClass', component: AddClassComponent},
+      { path: 'AddTestResult', component: AddTestResultComponent },
       { path: '', component: Students }
     ])
   ],
