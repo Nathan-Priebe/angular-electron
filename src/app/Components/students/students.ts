@@ -41,7 +41,7 @@ export class Students implements OnInit {
   {
     if(window.confirm('Are sure you want to delete this item ?')){
         this.databaseService.dbDelete({StudentId: Id}, this.db)
-        .then((docs) => window.location.reload())
+        .then((docs) => this.router.navigateByUrl('/StudentDetails'))
         .catch((err) => console.error(err));
      }
   }

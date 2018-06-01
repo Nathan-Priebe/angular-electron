@@ -15,16 +15,22 @@ export class Studentdto {
         this.Class = obj['Class'];
         this.StartDate = obj['StartDate'];
         this.EndDate = obj['EndDate'];
-        this.Results = obj['Results'].slice(0, 3);
-        if(this.Results.length > 0) {
-            this.Results.forEach(element => {
-                sum = Number(sum) + Number(element);
-            });
-            this.AverageResult = sum/this.Results.length;
+        this.Results = obj['Results'];
+        if(this.Results != undefined)
+        {
+            this.Results = this.Results.slice(0, 3);
+            if(this.Results.length > 0) {
+                this.Results.forEach(element => {
+                    sum = Number(sum) + Number(element);
+                });
+                this.AverageResult = sum/this.Results.length;
+            }
+            else {
+                this.AverageResult = 0;
+            }
         }
-        else {
-            this.AverageResult = 0;
+        else{
+            this.Results = [];
         }
-        
     }
 }

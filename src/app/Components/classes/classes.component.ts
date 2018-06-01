@@ -35,7 +35,7 @@ export class ClassesComponent implements OnInit {
   {
     if(window.confirm('Are sure you want to delete this item ?')){
         this.databaseService.dbDelete({_id: Id}, this.classDB)
-        .then((docs) => window.location.reload())
+        .then((docs) => this.router.navigateByUrl('/Classes'))
         .catch((err) => console.error(err));
      }
   }
