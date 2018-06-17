@@ -7,8 +7,37 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript">
+    var notifier = require('node-notifier');
+    var express = require('express');
+    var app = express();
+
+    app.get('/dowork', function (req, res) {
+      notifier
+        .notify({ message: 'Hello', wait: true }, function(err, data) {
+          // Will also wait until notification is closed.
+          console.log('Waited');
+          console.log(err, data);
+        })
+        .on('click', function() {
+          console.log(arguments);
+        });
+    })
+
+  function doNotify() {
+    notifier
+  .notify({ message: 'Hello', wait: true }, function(err, data) {
+    // Will also wait until notification is closed.
+    console.log('Waited');
+    console.log(err, data);
+  })
+  .on('click', function() {
+    console.log(arguments);
+  });
+}
+  </script>
 </head>
-<body style="background-color:white">
+<body style="background-color:white" onload="doNotify()">
         <app-root></app-root>
 </body>
 </html>
